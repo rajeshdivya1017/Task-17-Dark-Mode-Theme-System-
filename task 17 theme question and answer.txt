@@ -1,0 +1,56 @@
+1. What is a CSS custom property and how is it different from a hardcoded color value? Give an example from your code.
+
+	A CSS custom property (also called a CSS variable) is a reusable value that is defined once and used throughout the application. It is created using the --variable-name syntax and accessed using the var() function.
+	A hardcoded color value, such as background: #ffffff;, is fixed and must be changed manually everywhere it is used. CSS custom properties allow us to change the entire application's theme by updating the variable values in one place.
+
+Example from my project:
+========================
+
+	:root[data-theme="light"] {
+  	  --card-bg: #ffffff;
+	}
+
+	:root[data-theme="dark"] {
+  	  --card-bg: #1f2937;
+	}
+
+	.product-card {
+  	  background: var(--card-bg);
+	}
+
+	When the theme changes from light to dark, the value of --card-bg changes automatically, and all product cards update without modifying the component styles.
+
+2. Your app detects the user's system theme on first visit. How? Write the exact code that does this.
+
+	The application first checks whether a theme has already been saved in localStorage. If not, it checks the operating system's theme preference using window.matchMedia().
+
+Exact code:
+==============
+
+	const getInitialTheme = () => {
+ 	 const savedTheme = localStorage.getItem("theme");
+
+  	 if (savedTheme) {
+	    return savedTheme;
+	  }
+
+  	const prefersDark = window.matchMedia(
+ 	   "(prefers-color-scheme: dark)"
+	     ).matches;
+
+	  return prefersDark ? "dark" : "light";
+	};
+
+	This code ensures that on the first visit, the application automatically uses the same theme as the user's operating system.
+
+3. Why is using data-theme on the root element better than passing a theme prop to every single component?
+
+	Using data-theme on the root (<html>) element is a cleaner and more efficient approach because the theme is managed in one place. All CSS variables update automatically whenever the data-theme attribute changes.
+	If a theme prop is passed to every component, each component must receive and handle that prop, making the code more complex and harder to maintain.
+	With data-theme, one change updates the entire application's colors without modifying individual components.
+
+4. What is localStorage.getItem('theme') doing in getInitialTheme and why does it take priority over the system preference check?
+
+	localStorage.getItem("theme") checks whether the user has previously selected a theme (Light or Dark) and saved it in the browser.
+	It takes priority over the system preference because the user's manual choice should always be remembered. If a saved theme exists, the application uses that theme instead of checking the operating system's preference.
+	This provides a consistent user experience, even after refreshing the page or reopening the application.

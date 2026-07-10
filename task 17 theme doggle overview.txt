@@ -1,0 +1,29 @@
+Project Title:
+===============
+
+	Dark Mode & Theme System for E-Commerce Application Using React Context API and CSS Variables
+
+Project Overview:
+=================
+
+	This project adds a complete Dark Mode and Light Mode theme system to the existing React-based E-Commerce application. The application allows users to switch between light and dark themes using a theme toggle button in the navigation bar. The selected theme is stored in the browser's localStorage so that the user's preference is preserved even after refreshing or reopening the application. On the first visit, the application automatically detects the user's operating system theme preference and applies the appropriate theme. CSS custom properties (CSS variables) are used to manage colors and styling efficiently across the entire application.
+
+Technologies Used:
+==================
+React.js
+React Context API
+CSS3
+CSS Custom Properties (CSS Variables)
+JavaScript (ES6+)
+Local Storage API
+
+
+Purpose of this Project:
+=======================
+
+	The purpose of this project is to provide a modern and user-friendly theme management system for the E-Commerce application. The project demonstrates how CSS custom properties and the React Context API can be used together to implement a global theme that updates the entire application without modifying individual components. It also improves user experience by remembering the user's theme preference and automatically detecting the system's preferred color scheme during the first visit.
+
+Conclusion:
+===========
+
+	The Dark Mode & Theme System project successfully implements a flexible and reusable theme management solution for the React E-Commerce application. By using CSS variables and React Context API, the application can switch between light and dark themes with minimal code changes. The integration of localStorage ensures that user preferences are preserved across sessions, while automatic system theme detection enhances the overall user experience. This project demonstrates modern frontend development practices, improves application accessibility, and provides a clean, maintainable approach to managing themes in React applications.
